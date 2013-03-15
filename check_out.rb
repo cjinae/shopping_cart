@@ -7,22 +7,12 @@ require "./cart"
 class Checkout
 	attr_accessor :product_name
 
-	def initialize
-		@@product_name = ""
-		puts "hi"
-	end
-
 # start checkout
 	def self.start
-	@@product_name = ""
-	@@checkout = Cart.new(@@product_name)
+	@@checkout = Cart.new("")
 		while true							# fix later
 			self.show_results
 		end		
-	end
-
-	def self.total_cost_of_cart
-		@@total = @@checkout.all_product_prices.reduce(:+)
 	end
 
 # show results
@@ -31,8 +21,9 @@ class Checkout
 			product_name = gets.chomp.downcase
 		puts "Item just scanned is #{product_name}"
 		puts "Price of #{product_name} is $#{@@checkout.find_price(product_name)}"
-		puts "This is the new bill #{@@total}"
-		puts "Here is a list your current grocery list #{@@checkout.add_items_to_cart(product_name)}"
+		puts "These are all the prices in an array #{@@checkout.collect_prices}"   		#remove later
+		puts "This is your current bill #{@@checkout.add_all_prices}"
+		puts "Here is your current grocery list #{@@checkout.add_items_to_cart(product_name)}"
 		puts ""
 	end
 end
