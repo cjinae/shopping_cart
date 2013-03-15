@@ -8,18 +8,16 @@
 
 
 require 'test/unit'
-require './cart'
+require './check_out'
 
 
-class CartTest < Test::Unit::TestCase
+class CheckoutTest < Test::Unit::TestCase
 
-	def test_cart_products
-		@item = "grapes"
-		assert_equal("grapes")
+	def test_check_for_valid_item
+		all_product_names = ["apple", "orange", "milk", "eggs", "bread"]
+		c = Cart.new("")
+		assert_raise true, c.all_product_names.include?("apple")
+
 	end
-
-	def test_cart_price
-	end
-
 end
 
