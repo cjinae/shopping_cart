@@ -11,7 +11,7 @@ class Cart
 		puts "Bonjour!"
 		@all_product_names = []
 		@library = []
-		@product_name = ""
+		# @product_name = ""
 		@price = ""
 		@all_prices = []
 		@all_product_names = ["apple", "orange", "milk"]
@@ -51,6 +51,12 @@ class Cart
 			# 	raise InvalidGuessException.new("That's too bad. See you next time.")
 		end
 	end
+
+	# def status(phrase)
+	# 	if phrase == "checkout" 
+	# 		false
+	# 	end
+	# # end
 
 	# def exit_store(input)
 	# 	if input == "I have no money!"
