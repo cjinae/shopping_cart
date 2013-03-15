@@ -5,7 +5,7 @@ class Cart
 	class InvalidGuessException < StandardError 
 	end
 
-	attr_accessor :all_product_names, :all_product_prices, :library, :product_name, :prices, :customer_items	# attr_accessor will create for me both a method and a parameter
+	attr_accessor :all_product_names, :all_product_prices, :library, :product_name, :prices, :customer_items 	# attr_accessor will create for me both a method and a parameter
 
 	def initialize (item)					#  you need to pass the information data to the Cart
 		puts "Bonjour!"
@@ -52,18 +52,16 @@ class Cart
 		end
 	end
 
-	# def status(phrase)
-	# 	if phrase == "checkout" 
-	# 		false
-	# 	end
-	# # end
+	def cash_out(item)
+		if item == "cash me out"
+			true
+		end
+	end
 
 	# def exit_store(input)
 	# 	if input == "I have no money!"
 	# 		raise InvalidGuessException.new("Unfortunatly, you can't have these for free :(")
 	# end
-
-
 
 end
 
