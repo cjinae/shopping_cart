@@ -2,6 +2,7 @@ class Cart
 	# This class will be used for one trip to the grocery store
 	# It is only concerend with one cart and one customer
 	# It is not responsible for human interaction
+	
 	class InvalidGuessException < StandardError 
 	end
 	class Checkout < StandardError
@@ -9,7 +10,7 @@ class Cart
 
 	attr_accessor :all_product_names, :all_product_prices, :library, :product_name, :prices, :customer_items, :item 	# attr_accessor will create for me both a method and a parameter
 
-	def initialize					#  you need to pass the information data to the Cart
+	def initialize																	#  you don't need to pass item at the initialize state.
 		puts "Bonjour!"
 		@all_product_names = []
 		@library = []
@@ -20,15 +21,13 @@ class Cart
 		@customer_items = []
 	end
 
-	def check_for_valid_item(item)
+	def check_for_valid_item(item)													# this is the first time you will pass an item to the Checkout
 		@item = item
-		# puts "checking item array" + @all_product_names.include?(@item).to_s			# debugging tool by using puts ""
+		# puts "checking item array" + @all_product_names.include?(@item).to_s		# this is a debugging tool by using puts ""
 		if @item == "cash me out"
 			cash_out?
 		elsif	@all_product_names.include?(@item) == false
 				raise InvalidGuessException.new("Sorry! #{@item} is not for sale")
-			# elsif item == "I have no money!"
-			# 	raise InvalidGuessException.new("That's too bad. See you next time.")
 		end
 	end
 
@@ -50,6 +49,14 @@ class Cart
 		@all_prices.inject(:+)
 	end
 
+	def cash_out?
+		if @item == "cash me out"
+			true
+			raise Checkout.new("Goodbye")
+		end
+	end
+
+# other methods/exceptions to add later
 	# def unit_sum(item)
 	# 	count = @all_product_names.count(item)
 	# 	if  count >= 3
@@ -57,13 +64,6 @@ class Cart
 	# 	end
 	# end
 
-
-	def cash_out?
-		if @item == "cash me out"
-			true
-			raise Checkout.new("Goodbye")
-		end
-	end
 
 	# def exit_store(input)
 	# 	if input == "I have no money!"
